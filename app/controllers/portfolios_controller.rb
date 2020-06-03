@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PortfoliosController < ApplicationController
+  before_action :set_portfolio, only: %i[show edit update]
+
   def index
     @portfolios = Portfolio.all
   end
@@ -8,6 +10,8 @@ class PortfoliosController < ApplicationController
   def new
     @portfolio = Portfolio.new
   end
+
+  def show; end
 
   def create
     @portfolio = Portfolio.new(portfolio_params)
@@ -19,13 +23,9 @@ class PortfoliosController < ApplicationController
     end
   end
 
-  def edit
-    @portfolio = Portfolio.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @portfolio = Portfolio.find(params[:id])
-
     if @portfolio.update(portfolio_params)
       redirect_to portfolios_path, flash[:notice] = { message: 'Portfolio updated' }
     else
@@ -39,5 +39,9 @@ class PortfoliosController < ApplicationController
     params
       .require(:portfolio)
       .permit(:title, :subtitle, :body, :main_image, :thumb_image)
+  end
+
+  def set_portfolio
+    @portfolio = Portfolio.find(params[:id])
   end
 end

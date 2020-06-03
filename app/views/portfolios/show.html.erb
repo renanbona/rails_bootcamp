@@ -1,0 +1,17 @@
+<div class="portfolio-item-show">
+  <h1>
+    <%= @portfolio.title %>
+  </h1>
+
+  <h3>
+    <%= @portfolio.subtitle %>
+  </h3>
+
+  <p>
+    <%= @portfolio.body %>
+  </p>
+
+  <%= image_tag @portfolio.main_image %>
+</div>
+
+<%= link_to 'back', portfolios_path %>
