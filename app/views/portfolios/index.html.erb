@@ -5,7 +5,7 @@
 <% @portfolios.each do |portfolio| %>
   <div class="portfolio-item">
     <h3>
-      <%= link_to portfolio.title, portfolio_path(portfolio) %>
+      <%= link_to portfolio.title, portfolio %>
     </h3>
     <h5><%= portfolio.subtitle %></h5>
     <p><%= portfolio.body %></p>
@@ -13,4 +13,5 @@
   </div>
 
   <%= link_to 'edit', edit_portfolio_path(portfolio) %>
+  <%= link_to 'delete', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
