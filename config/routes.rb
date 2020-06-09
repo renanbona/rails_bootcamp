@@ -1,8 +1,15 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :portfolios
-  get 'pages/home'
-  get 'pages/about'
-  get 'pages/contact'
-  resources :blogs
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'about', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
+
+  resources :blogs do
+    member do
+      get '/toogle_status', to: 'blogs#toogle_status'
+    end
+  end
+
+  root to: 'pages#home'
 end

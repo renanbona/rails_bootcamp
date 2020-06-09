@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[show edit update destroy]
+  before_action :set_blog, only: %i[show edit update destroy toogle_status]
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.order(:title)
   end
 
   # GET /blogs/1
@@ -61,11 +61,21 @@ class BlogsController < ApplicationController
     end
   end
 
+  def toogle_status
+    if @blog.draft?
+      @blog.published!
+    else
+      @blog.draft!
+    end
+
+    redirect_to blogs_url, notice: 'Blog has been updated!'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_blog
-    @blog = Blog.find(params[:id])
+    @blog = Blog.friendly.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
