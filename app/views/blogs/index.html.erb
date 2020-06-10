@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Topic</th>
       <th>Title</th>
       <th>Body</th>
       <th colspan="4"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
+        <td><%= blog.topic.title %></td>
         <td><%= blog.title %></td>
         <td><%= blog.body %></td>
         <td><%= link_to blog.status, toogle_status_blog_path(blog) %><%=  %></td>

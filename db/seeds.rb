@@ -1,9 +1,16 @@
 # frozen_string_literal: true
 
+3.times do
+  Topic.create!(title: Faker::TvShows::GameOfThrones.house)
+end
+
+puts 'Topics crated'
+
 10.times do |i|
   Blog.create!(
     title: "Blog #{i}",
-    body: Faker::Lorem.paragraph
+    body: Faker::Lorem.paragraph,
+    topic: Topic.all.sample
   )
 end
 
