@@ -4,6 +4,8 @@ class Portfolio < ApplicationRecord
   include Placeholder
   after_initialize :set_defaults
 
+  has_many :technologies
+
   validates :title, :body, presence: true
 
   private
