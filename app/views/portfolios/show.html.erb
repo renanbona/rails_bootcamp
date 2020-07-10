@@ -12,6 +12,13 @@
   </p>
 
   <%= image_tag @portfolio.main_image %>
+
+  <h2>Technologies</h2>
+  <%= @portfolio.technologies.each do |technology| %>
+    <p>
+      <%= technology.name %>
+    </p>
+  <% end %>
 </div>
 
 <%= link_to 'back', portfolios_path %>
