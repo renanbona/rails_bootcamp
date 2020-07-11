@@ -3,6 +3,9 @@
 class Portfolio < ApplicationRecord
   include Placeholder
   after_initialize :set_defaults
+  has_many :technologies
+
+  accepts_nested_attributes_for :technologies, reject_if: ->(attrs) { attrs['name'].blank? }
 
   validates :title, :body, presence: true
 

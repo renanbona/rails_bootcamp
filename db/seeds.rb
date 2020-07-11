@@ -35,4 +35,10 @@ puts 'Skills Created'
   )
 end
 
-puts 'Portfolios Created'
+5.times do |_i|
+  Portfolio.all.sample.technologies.create!(
+    name: Faker::ProgrammingLanguage.name
+  )
+end
+
+puts 'Technologies Created'
