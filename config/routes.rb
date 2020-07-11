@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   resources :portfolios
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
