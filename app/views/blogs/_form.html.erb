@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :topic %>
+    <%= form.select(:topic_id, options_from_collection_for_select(@topics, :id, :title)) %>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
